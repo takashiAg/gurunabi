@@ -3,7 +3,7 @@ const http = require("./crud.js");
 
 let iframe_url = "https://www.google.co.jp/maps/"
 let api_url = "https://api.gnavi.co.jp/RestSearchAPI/v3/"
-let keyid = "35bdc81c912412d08cb70f6e98c06e7f"
+let keyid = "d5560ce384cf654e0c24f5b5e95b4b66"
 
 var ymap = null
 window.onload = function () {
@@ -16,7 +16,7 @@ setInterval(async () => {
     let {Lat, Lon} = ymap.getCenter()
     let d = await find(Lat, Lon)
     console.log(d)
-}, 100)
+}, 5000)
 
 /*
  * latitude  : 緯度
@@ -24,7 +24,8 @@ setInterval(async () => {
  */
 let find = async (latitude, longitude) => {
     let data = {
-        keyid, latitude, longitude
+        keyid, latitude, longitude,
+        range: 1
     }
     return await http.get(api_url, data)
 }
