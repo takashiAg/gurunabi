@@ -37,17 +37,23 @@
     <thead>
     <tr>
         <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">名前</th>
+        <th scope="col">開店時間</th>
+        <th scope="col">電話番号</th>
+        <th scope="col">url</th>
+        <th scope="col">カテゴリ</th>
+        <th scope="col">立地</th>
     </tr>
     </thead>
     <tbody>
-    <tr v-for="result in results">
+    <tr v-for="(result,index) in results">
+        <td>{{ index }}</td>
         <td>{{ result.name }}</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
+        <td>{{result.opentime}}</td>
+        <td>{{result.tel}}</td>
+        <td>{{result.url}}</td>
+        <td>{{result.category}}</td>
+        <td>{{result.access.station}} 徒歩{{result.access.walk}} 分</td>
     </tr>
     </tbody>
 </table>

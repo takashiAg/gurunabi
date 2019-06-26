@@ -22,22 +22,26 @@ window.onload = function () {
 
 find_ymap = async () => {
     let {Lat, Lon} = ymap.getCenter()
-    let data = await find(Lat, Lon)
+    let data = await find(Lat, Lon, 1, {
+        outret: 0,
+        wifi: 1
+    })
     // let data = JSON.parse(d)
     table.results = data;
-
 }
 
 /*
  * latitude  : 緯度
  * longitude : 経度
  */
-let find = async (latitude, longitude, offset) => {
+let find = async (latitude, longitude, offset, option) => {
     if (typeof offset !== typeof 1)
         offset = 1
     let data = {
         keyid, latitude, longitude,
         range: 1,
+        wifi: ("wifi" in option ? option.wifi : 0),
+        outret: ("outret" in option ? option.outret : 0),
         offset_page: offset,
         hit_per_page: 100
     }
